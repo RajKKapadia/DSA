@@ -13,6 +13,7 @@ This repository contains Python solutions for data structures and algorithms pra
 - `container-with-most-water`
 - `move-zeroes`
 - `best-price-to-buy-sell-stock`
+- `remove-duplicated-sorted-array`
 
 ## Running Tests
 
