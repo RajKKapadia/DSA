@@ -95,15 +95,31 @@ def move_zeroes(nums: list[int]) -> list[int]:
 # nums = [0, 1, 0, 3, 12]
 # print(move_zeroes(nums=nums))
 
+def print_test_result(index: int, name: str, passed: bool, details: dict[str, object]) -> int:
+    status = "PASSED" if passed else "FAILED"
+    print(f"Test {index}: {status} - {name}")
+
+    if not passed:
+        for label, value in details.items():
+            print(f"  {label}: {value}")
+
+    return int(passed)
+
+
+passed_tests = 0
+
 for index, test in enumerate(test_cases, start=1):
     nums = test["input"].copy()
     result = move_zeroes(nums)
+    passed_tests += print_test_result(
+        index,
+        test["name"],
+        result == test["expected"],
+        {
+            "input": test["input"],
+            "expected": test["expected"],
+            "got": result,
+        },
+    )
 
-    if result == test["expected"]:
-        print(f"Test {index} Passed: {test['name']}")
-    else:
-        print(f"Test {index} Failed: {test['name']}")
-        print(f"  input:    {test['input']}")
-        print(f"  expected: {test['expected']}")
-        print(f"  got:      {result}")
-        
+print(f"Summary: {passed_tests}/{len(test_cases)} tests passed")

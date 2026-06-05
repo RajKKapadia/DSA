@@ -114,12 +114,30 @@ def max_area(height: list[int]) -> int:
         
     return result
 
-for test_case in test_cases:
-    actual = max_area(test_case["input"])
+def print_test_result(index: int, name: str, passed: bool, details: dict[str, object]) -> int:
+    status = "PASSED" if passed else "FAILED"
+    print(f"Test {index}: {status} - {name}")
 
-    if actual == test_case["expected"]:
-        print("Passed:", test_case["input"])
-    else:
-        print("Failed:", test_case["input"])
-        print("Expected:", test_case["expected"])
-        print("Actual:", actual)
+    if not passed:
+        for label, value in details.items():
+            print(f"  {label}: {value}")
+
+    return int(passed)
+
+
+passed_tests = 0
+
+for index, test_case in enumerate(test_cases, start=1):
+    actual = max_area(test_case["input"])
+    passed_tests += print_test_result(
+        index,
+        f"case {index}",
+        actual == test_case["expected"],
+        {
+            "input": test_case["input"],
+            "expected": test_case["expected"],
+            "got": actual,
+        },
+    )
+
+print(f"Summary: {passed_tests}/{len(test_cases)} tests passed")

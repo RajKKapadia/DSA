@@ -127,14 +127,31 @@ def two_sum(numbs: list[int], target: int) -> list[int]:
 # target = 9
 # print(two_sum(numbs=numbs, target=target))
 
+def print_test_result(index: int, name: str, passed: bool, details: dict[str, object]) -> int:
+    status = "PASSED" if passed else "FAILED"
+    print(f"Test {index}: {status} - {name}")
+
+    if not passed:
+        for label, value in details.items():
+            print(f"  {label}: {value}")
+
+    return int(passed)
+
+
+passed_tests = 0
+
 for index, test in enumerate(test_cases, start=1):
     result = two_sum(test["nums"], test["target"])
+    passed_tests += print_test_result(
+        index,
+        f"case {index}",
+        result == test["expected"],
+        {
+            "nums": test["nums"],
+            "target": test["target"],
+            "expected": test["expected"],
+            "got": result,
+        },
+    )
 
-    if result == test["expected"]:
-        print(f"Test {index}: Passed")
-    else:
-        print(f"Test {index}: Failed")
-        print(f"  nums:     {test['nums']}")
-        print(f"  target:   {test['target']}")
-        print(f"  expected: {test['expected']}")
-        print(f"  got:      {result}")
+print(f"Summary: {passed_tests}/{len(test_cases)} tests passed")
