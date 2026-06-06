@@ -14,6 +14,7 @@ This repository contains Python solutions for data structures and algorithms pra
 - `move-zeroes`
 - `best-price-to-buy-sell-stock`
 - `remove-duplicated-sorted-array`
+- `three-sum-problem`
 
 ## Running Tests
 
