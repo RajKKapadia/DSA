@@ -11,6 +11,7 @@ practice problems. Each problem is self-contained in its own folder with a
 | `best-price-to-buy-sell-stock` | Arrays, one-pass minimum tracking |
 | `container-with-most-water` | Arrays, two pointers |
 | `linked-list` | Reversal, cycle detection, middle node, merging, removal, palindrome check |
+| `longest-substring` | Strings, sliding window, sets |
 | `move-zeroes` | Arrays, in-place two pointers |
 | `remove-duplicated-sorted-array` | Sorted arrays, in-place two pointers |
 | `three-sum-problem` | Sorting, two pointers, duplicate handling |
